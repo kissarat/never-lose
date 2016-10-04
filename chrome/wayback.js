@@ -4,18 +4,18 @@ let last = Date.now()
 const excludes = [
   /^chrome:/,
   /^https?:..\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/,
-  /^https?:..[^\/]*archive.org/,
-  /^https?:..[^\/]*facebook.com/,
-  /^https?:..[^\/]*google.(com|ua|ru)/,
-  /^https?:..[^\/]*gmail.com/,
-  /^https?:..[^\/]*vk.com/,
-  /^https?:..[^\/]*yandex.(ru|ua)/,
   /^https?:..[^\/]*amazon.com/,
-  /^https?:..[^\/]*wikipedia.org/,
-  /^https?:..[^\/]*bing.com/,
-  /^https?:..[^\/]*yahoo.com/,
   /^https?:..[^\/]*apple.com/,
-  /^https?:..[^\/]*evart[\w\-.]+com/
+  /^https?:..[^\/]*archive.org/,
+  /^https?:..[^\/]*bing.com/,
+  /^https?:..[^\/]*evart[\w\-.]+com/,
+  /^https?:..[^\/]*facebook.com/,
+  /^https?:..[^\/]*gmail.com/,
+  /^https?:..[^\/]*google.(com|ua|ru)/,
+  /^https?:..[^\/]*vk.com/,
+  /^https?:..[^\/]*wikipedia.org/,
+  /^https?:..[^\/]*yahoo.com/,
+  /^https?:..[^\/]*yandex.(ru|ua)/
 ]
 
 function random(min, max) {
