@@ -1,0 +1,24 @@
+{
+  "name": "never-lose",
+  "version": "0.1.0",
+  "description": "This Chrome extension save all web pages you viewed to the Wayback Machine",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kissarat/never-lose.git"
+  },
+  "keywords": [
+    "archive.org",
+    "history",
+    "paranoia"
+  ],
+  "author": "Taras Labiak <kissarat@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/kissarat/never-lose/issues"
+  },
+  "homepage": "https://github.com/kissarat/never-lose#readme"
+}
