@@ -10,7 +10,7 @@
     "64": "/images/icon-64.png",
     "128": "/images/icon-128.png"
   },
-  "homepage_url": "https://github.com/kissarat/never-lose",
+  "homepage_url": "https://github.com/kissarat/never-lose/blob/master/README.md",
   "permissions": [
     "webNavigation",
     "tabs",
