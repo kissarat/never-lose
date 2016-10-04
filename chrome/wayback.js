@@ -4,6 +4,9 @@ let last = Date.now()
 const excludes = [
   /^chrome:/,
   /^https?:..\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/,
+  /^https?:..[^\/]*localhost/,
+  /^https?:..[^\/]*.local/,
+
   /^https?:..[^\/]*amazon.com/,
   /^https?:..[^\/]*apple.com/,
   /^https?:..[^\/]*archive.org/,
@@ -32,7 +35,15 @@ const _ = {
 }
 
 function find(url) {
-  url = url.split('#')
+  if (url && url.split) {
+    url = url.split('#')
+  }
+  else {
+    if (url) {
+      console.error(url)
+    }
+    throw new Error('invalid url')
+  }
   return new Promise(function (resolve, reject) {
     let info = urls[url]
     if (!info) {
@@ -42,7 +53,10 @@ function find(url) {
       }
     }
     if (excludes.some(rex => rex.test(url))) {
-      reject()
+      reject({
+        excluded: true,
+        url: url
+      })
     }
     else {
       resolve(info)
@@ -147,8 +161,13 @@ chrome.browserAction.onClicked.addListener(function (tab) {
         chrome.tabs.create({url: 'https://web.archive.org/web/*/' + info.url})
       }
     })
-    .catch(function () {
-      chrome.tabs.create({url: 'https://web.archive.org/web/*/' + info.url})
+    .catch(function (err) {
+      if (err.excluded) {
+        alert(`The url ${err.url} is in excluded list`)
+      }
+      else {
+        chrome.tabs.create({url: 'https://web.archive.org/web/*/' + info.url})
+      }
     })
 })
 
