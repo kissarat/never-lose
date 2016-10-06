@@ -6,16 +6,18 @@ const excludes = [
   /^https?:..\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/,
   /^https?:..[^\/]*localhost/,
   /^https?:..[^\/]*.local/,
+  /(kissarat|11351378)/,
 
-  /^https?:..[^\/]*amazon.com/,
+  /^https?:..[^\/]*aws.amazon.com/,
   /^https?:..[^\/]*apple.com/,
   /^https?:..[^\/]*archive.org/,
   /^https?:..[^\/]*bing.com/,
   /^https?:..[^\/]*evart[\w\-.]+com/,
-  /^https?:..[^\/]*facebook.com/,
+  /^https?:..[^\/]*facebook.com\/(messages|games|livemap|onthisday|translations|editor|saved)\//,
   /^https?:..[^\/]*gmail.com/,
   /^https?:..[^\/]*google.(com|ua|ru)/,
-  /^https?:..[^\/]*vk.com/,
+  /^https?:..[^\/]*api.telegram.org/,
+  /^https?:..[^\/]*vk.com\/(im|video|friends|feed|groups|edit|apps)(\?act=\w+)$/,
   /^https?:..[^\/]*wikipedia.org/,
   /^https?:..[^\/]*yahoo.com/,
   /^https?:..[^\/]*yandex.(ru|ua)/
@@ -36,7 +38,7 @@ const _ = {
 
 function find(url) {
   if (url && url.split) {
-    url = url.split('#')
+    url = url.split('#')[0]
   }
   else {
     if (url) {
@@ -174,7 +176,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 chrome.webRequest.onHeadersReceived.addListener(function (res) {
     if ('main_frame' === res.type && 'GET' === res.method) {
       find(res.url).then(function (info) {
-        save(_.extendKeys(info, res, 'statusCode', 'url'))
+        save(_.extendKeys(info, res, 'statusCode'))
       })
     }
   },
