@@ -1,2 +1,4 @@
 .idea/
 chrome/bower_components
+node_modules
+npm-debug.log

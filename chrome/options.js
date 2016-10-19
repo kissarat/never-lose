@@ -26,7 +26,7 @@ chrome.storage.sync.get('rules', function ({rules}) {
       /^https?:..[^\/]*bing.com/,
       /^https?:..[^\/]*facebook.com\/(messages|games|livemap|onthisday|translations|editor|saved)\//,
       /^https?:..[^\/]*gmail.com/,
-      /^https?:..[^\/]*google.([a-z]+)/,
+      /^https?:..[^\/]*google(\.com)?\.([a-z]+)/,
       /^https?:..[^\/]*api.telegram.org/,
       /^https?:..[^\/]*vk.com\/(im|video|friends|feed|groups|edit|apps)(\?act=\w+)$/,
       /^https?:..[^\/]*wikipedia.org/,
