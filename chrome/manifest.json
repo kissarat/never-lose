@@ -11,10 +11,12 @@
     "128": "/images/icon-128.png"
   },
   "homepage_url": "https://github.com/kissarat/never-lose/blob/master/README.md",
+  "options_page": "options.html",
   "permissions": [
     "<all_urls>",
     "activeTab",
     "tabs",
+    "storage",
     "webNavigation",
     "webRequest",
     "webRequestBlocking"

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Never Lose</title>
+    <!--<link rel="stylesheet" href="bower_components/jquery/dist/jquery.js">-->
+    <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/js/bootstrap.js">-->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        form {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin-top: 8px;
+        }
+
+        textarea {
+            flex: 1;
+            font-family: "Courier New", monospace;
+        }
+
+        .right {
+            text-align: right;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+<form class="container">
+    <div class="alert alert-success" style="display: none">Success</div>
+    <div class="form-group">
+        <label>Regular expression exclusion URLs</label>
+        <textarea class="form-control"></textarea>
+    </div>
+    <div class="right">
+    <button type="button" class="btn btn-danger">Reset</button>
+    <button type="button" class="btn btn-primary">Save</button>
+    </div>
+</form>
+<script src="options.js"></script>
+</body>
+</html>

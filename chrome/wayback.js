@@ -1,27 +1,8 @@
 const urls = {}
 const queue = []
 let last = Date.now()
-const excludes = [
-  /^chrome:/,
-  /^https?:..\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/,
-  /^https?:..[^\/]*localhost/,
-  /^https?:..[^\/]*.local/,
-  /(kissarat|11351378)/,
 
-  /^https?:..[^\/]*aws.amazon.com/,
-  /^https?:..[^\/]*apple.com/,
-  /^https?:..[^\/]*archive.org/,
-  /^https?:..[^\/]*bing.com/,
-  /^https?:..[^\/]*evart[\w\-.]+com/,
-  /^https?:..[^\/]*facebook.com\/(messages|games|livemap|onthisday|translations|editor|saved)\//,
-  /^https?:..[^\/]*gmail.com/,
-  /^https?:..[^\/]*google.(com|ua|ru)/,
-  /^https?:..[^\/]*api.telegram.org/,
-  /^https?:..[^\/]*vk.com\/(im|video|friends|feed|groups|edit|apps)(\?act=\w+)$/,
-  /^https?:..[^\/]*wikipedia.org/,
-  /^https?:..[^\/]*yahoo.com/,
-  /^https?:..[^\/]*yandex.(ru|ua)/
-]
+let excludes = []
 
 const _ = {
   random(min, max) {
@@ -173,6 +154,22 @@ chrome.browserAction.onClicked.addListener(function (tab) {
     })
 })
 
+function loadRules() {
+  chrome.storage.sync.get('rules', function ({rules}) {
+    rules = rules ? rules.split('\n') : []
+    excludes = [
+      /^https?:..[^\/]*archive.org/,
+      /(kissarat|11351378)/
+    ]
+    rules.filter(s => s.trim() && !/^\s+#/.test(s))
+      .forEach(function (rule) {
+        excludes.push(new RegExp(rule))
+      })
+  })
+}
+
+chrome.storage.onChanged.addListener(loadRules)
+
 chrome.webRequest.onHeadersReceived.addListener(function (res) {
     if ('main_frame' === res.type && 'GET' === res.method) {
       find(res.url).then(function (info) {
@@ -182,3 +179,5 @@ chrome.webRequest.onHeadersReceived.addListener(function (res) {
   },
   {urls: ["<all_urls>"]}
 )
+
+loadRules()

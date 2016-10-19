@@ -1,0 +1,25 @@
+{
+  "name": "never-lose",
+  "homepage": "https://github.com/kissarat/never-lose",
+  "authors": [
+    "Taras Labiak <kissarat@gmail.com>"
+  ],
+  "description": "This extension save all web pages you viewed to the Wayback Machine",
+  "main": "wayback.js",
+  "keywords": [
+    "chrome",
+    "extension",
+    "archive"
+  ],
+  "license": "GPL-3.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "4"
+  }
+}
