@@ -1,3 +1,4 @@
+var porn = `
 24hentai.com
 69games.xxx
 88fuck.com
@@ -146,3 +147,4 @@ youjizz.com
 youporn.com
 youramateurporn.com
 yourlustmovies.com
+`

@@ -5,11 +5,14 @@ const successAlert = document.querySelector('.alert-success')
 
 chrome.storage.sync.get('rules', function ({rules}) {
   if (!rules) {
-    // [].map.call(document.querySelectorAll('[target=_blank]'), s => /^https?:\/\/([^\/]+)\/$/.exec(s.href)).filter(s => s).map(s => s[1]).join(' ')
-    const porn = '24hentai.com 69games.xxx 88fuck.com actual-porn.org adultvideofinder.com alotporn.com amazon.com anotherpornblog.tumblr.com apetube.com apina.biz avn.com awsum.me babe-lounge.com babepedia.com badjojo.com befuck.com best-paypornsites.com bestpornstardb.com bootytape.com bravotube.net celebuzz.com chan.sankakucomplex.com daftporn.com dailee.com dansmovies.com definebabe.com deviantclip.com dirtyrottenwhore.com drtuber.com efukt.com elephanttube.com entnt.com eporner.com erooups.com erotica7.com eroxia.com extremetube.com fakku.net fapdu.com femdom-tube.xxx findtubes.com forum.oneclickchicks.com forum.xnxx.com forumophilia.com freeones.com freudbox.com fuckuh.com fuskator.com fux.com gelbooru.com h2porn.com hclips.com hdhentaisex.com hdporn.net hentai-foundry.com hentai.tc hentai4manga.com hentairules.net hentaischool.com hide-porn.winsite.com hollywoodlife.com imagearn.com inxporn.com justjared.com justusboys.com keepersecurity.com keezmovies.com kindgirls.com laineygossip.com lolhentai.net lustpin.com madthumbs.com maxim.com mediadetective.com mofosex.com myhentai.tv mypornbible.com myporngay.com myxvids.com nakednews.com nudevista.com nurglesnymphs.com nuvid.com orgasm.com peachyforum.com perezhilton.com pervclips.com phapit.com phun.org planetsuzy.org playforceone.com playporngames.com porn-wanted.com pornative.com pornbb.org pornbits.net porncor.com pornerbros.com pornheed.com pornhost.com pornhub.com pornicom.com pornjog.com pornmaxim.com pornmd.com pornpin.com pornplanner.com pornrabbit.com porntitan.com proporn.com punchpin.com pussytorrents.org sexforums.com sexyfuckgames.com simply-hentai.com slutload.com smutty.com spankbang.com sunporno.com the-pork.com thehollywoodgossip.com thenewporn.com thongsaroundtheworld.com tjoob.com tnaflix.com topfreepornvideos.com totallynsfw.com tube8.com tubegalore.com tubehentai.com updatetube.com uselessjunk.com userporn.com vintagepinupgirls.net vpornvideos.com wankoz.com wetplace.com wtfpeople.com xbabe.com xhamster.com xnxx.com xvideos.com xxxbunker.com xxxymovies.com youjizz.com youporn.com youramateurporn.com yourlustmovies.com'
-      .replace(/\./g, '\\.')
-      .split(' ')
-      .map(s => `^https?:\\/\\/[\\w\\-\\.]+${s}\\/`)
+    // [].map.call(document.querySelectorAll('[target=_blank]'), s => /^https?:\/\/(www\.)?([^\/]+)\/$/.exec(s.href)).filter(s => s).map(s => s[2]).sort().join(' ')
+    porn = porn
+      .split(/\s*\n\s*/g)
+      .filter(s => s)
+      .map(function (s) {
+        s = s.replace(/\./g, '\\.')
+        return `^https?:\\/\\/[\\w\\-\\.]+${s}\\/`
+      })
     rules = [
       '# Special URLs',
       /^chrome:/,

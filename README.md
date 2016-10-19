@@ -19,6 +19,8 @@ Domains excluded by default:
 * yahoo.com
 * yandex.ru
 * Any IP addresses
-* 100+ [porn sites](porn.txt)
+* 100+ [porn sites](chrome/list/porn.js)
 
 You can change these rules in Options page using regular expressions
+
+![Options page](https://upload.wikimedia.org/wikipedia/commons/6/66/Never_Lose_0.2.0.png)
