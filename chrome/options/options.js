@@ -29,7 +29,7 @@ function domainToRegex(domain) {
   domain = domain
     .replace('www.', '')
   let regex = domain.replace(/\./g, '\\.')
-  regex = `^https?:\\/\\/[\\w\\-\\.]+${regex}\\/`
+  regex = `^https?:\\/{2}([^\\/]+\\.)?${regex}\\/`
   return {domain, regex}
 }
 
@@ -72,40 +72,43 @@ const buttons = {
   }
 }
 
+// [].map.call(document.querySelectorAll('[target=_blank]'), s => /^https?:\/\/(www\.)?([^\/]+)\/$/.exec(s.href)).filter(s => s).map(s => s[2]).sort().join(' ')
+function processDomainList(list) {
+  if ('string' === typeof list) {
+    list = list.split(/\s*\n\s*/g)
+  }
+  return list
+    .map(s => s.trim())
+    .map((s) => s && s.indexOf('#') < 0 ? domainToRegex(s).regex : s)
+}
+
 chrome.storage.sync.get('rules', function ({rules}) {
   if (!rules) {
-    // [].map.call(document.querySelectorAll('[target=_blank]'), s => /^https?:\/\/(www\.)?([^\/]+)\/$/.exec(s.href))
-    // .filter(s => s).map(s => s[2]).sort().join(' ')
-    porn = porn
-      .split(/\s*\n\s*/g)
-      .filter(s => s && s.trim())
-      .map((s) => domainToRegex(s).regex)
     rules = [
       '# Special URLs',
-      /^chrome:/,
-      /^https?:..\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/,
-      /^https?:..[^\/]*localhost/,
-      /^https?:..[^\/]*\.local/,
+      /^chrome(-extension)?:/,
+      /^https?:\/{2}\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/,
+      /^https?:\/{2}[^\/]*localhost/,
+      /^https?:\/{2}[^\/]*\.local/,
 
       '\n# Well known sites',
-      /^https?:..[^\/]*apple\.com/,
-      /^https?:..[^\/]*aws\.amazon\.com/,
-      /^https?:..[^\/]*bing\.com/,
-      /^https?:..[^\/]*facebook.com\/(messages|games|livemap|onthisday|translations|editor|saved)\//,
-      /^https?:..[^\/]*gmail\.com/,
-      /^https?:..[^\/]*google(\.com)?\.([a-z]+)/,
-      /^https?:..[^\/]*api\.telegram\.org/,
-      /^https?:..[^\/]*vk\.com\/(im|video|friends|feed|groups|edit|apps)(\?act=\w+)$/,
-      /^https?:..[^\/]*yahoo\.com/,
-      /^https?:..[^\/]*yandex\.([a-z]+)/,
-      '\n# Porn sites'
+      /^https?:\/{2}[^\/]*facebook\.com\/(messages|games|livemap|onthisday|translations|editor|saved)\//,
+      /^https?:\/{2}[^\/]*google(\.com)?\.([a-z]+)/,
+      /^https?:\/{2}[^\/]*(google|yahoo)(\.co)\.([a-z]{2})/,
+      /^https?:\/{2}[^\/]*vk\.com\/(im|video|friends|feed|groups|edit|apps)(\?act=\w+)$/,
+      /^https?:\/{2}[^\/]*yandex\.([a-z]+)/,
+      /^https?:\/{2}t\.co\//,
+      /^https?:\/{2}[gt]mail\.com\//,
+      /^https?:\/{2}(web|api)\.telegram\.org\//
     ]
       .map(s => 'string' == typeof s ? s : s.toString().slice(1, -1))
-      .concat(porn)
+      .concat(processDomainList(well_known))
+      .concat(processDomainList(advertise))
+      .concat(processDomainList(porn))
       .join('\n')
   }
 
-  ui.textarea.value = rules
+  ui.textarea.value = rules.replace(/\n\n\n/g, '\n\n')
   if ('function' === typeof ui.textarea.setSelectionRange) {
     ui.textarea.setSelectionRange(0, 0)
   }

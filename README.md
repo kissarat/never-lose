@@ -5,20 +5,16 @@ This Chrome extension save all web pages you viewed to the Wayback Machine
 
 [Download](https://github.com/kissarat/never-lose/raw/master/build/never-lose.crx)
 
-Domains excluded by default:
-* aws.amazon.com
-* apple.com
+Sites excluded by default:
 * archive.org
-* bing.com
+* archive.is
 * facebook.com (only private URLs)
-* gmail.com
-* google.com
 * vk.com (only private URLs)
-* wikipedia.org
-* yahoo.com
-* yandex.ru
+* Search Eninges (Google, Yahoo, Bind, Yahoo, Yandex and others)
 * Any IP addresses and localhost
-* 100+ [porn sites](chrome/list/porn.js)
+* [Well known sites](chrome/list/well_known.js)
+* [Advertise](chrome/list/advertise.js)
+* 300+ [porn sites](chrome/list/porn.js)
 
 You can change these rules in Options page using regular expressions
 

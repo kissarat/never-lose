@@ -158,8 +158,8 @@ function loadRules() {
   chrome.storage.sync.get('rules', function ({rules}) {
     rules = rules ? rules.split('\n') : []
     excludes = [
-      /^https?:..[^\/]*archive\.org/,
-      /^https?:..[^\/]*archive\.is/,
+      /^https?:\/{2}[^\/]*archive\.org/,
+      /^https?:\/{2}[^\/]*archive\.is/,
       /(kissarat|11351378)/
     ]
     rules

@@ -23,6 +23,7 @@ label > i {
 
 textarea {
     flex: 1;
+    white-space: nowrap;
     font-family: "Courier New", monospace;
 }
 
