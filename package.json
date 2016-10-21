@@ -1,10 +1,11 @@
 {
   "name": "never-lose",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "This Chrome extension save all web pages you viewed to the Wayback Machine",
   "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "version": "node utils/version.js"
   },
   "repository": {
     "type": "git",
