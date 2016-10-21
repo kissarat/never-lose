@@ -3,7 +3,7 @@
   "name": "Never Lose",
   "short_name": "Never Lose",
   "description": "This extension save all web pages you viewed to the Wayback Machine",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "icons": {
     "16": "/images/icon-16.png",
     "32": "/images/icon-32.png",
@@ -11,7 +11,7 @@
     "128": "/images/icon-128.png"
   },
   "homepage_url": "https://github.com/kissarat/never-lose/blob/master/README.md",
-  "options_page": "options.html",
+  "options_page": "options/options.html",
   "permissions": [
     "<all_urls>",
     "activeTab",
@@ -22,9 +22,7 @@
     "webRequestBlocking"
   ],
   "background": {
-    "scripts": [
-      "wayback.js"
-    ]
+    "scripts": ["wayback.js"]
   },
   "browser_action": {
     "default_icon": {

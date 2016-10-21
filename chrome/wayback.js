@@ -158,10 +158,16 @@ function loadRules() {
   chrome.storage.sync.get('rules', function ({rules}) {
     rules = rules ? rules.split('\n') : []
     excludes = [
-      /^https?:..[^\/]*archive.org/,
+      /^https?:..[^\/]*archive\.org/,
+      /^https?:..[^\/]*archive\.is/,
       /(kissarat|11351378)/
     ]
-    rules.filter(s => s.trim() && !/^\s+#/.test(s))
+    rules
+      .map(function (s) {
+        const m = /^(.*)\s+#(.*)$/.exec(s)
+        return m ? m[1] : s
+      })
+      .filter(s => s.trim())
       .forEach(function (rule) {
         excludes.push(new RegExp(rule))
       })

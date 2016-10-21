@@ -1,5 +1,5 @@
-Never Lose
-==========
+Never Lose 0.3.0
+================
 
 This Chrome extension save all web pages you viewed to the Wayback Machine
 
@@ -10,7 +10,6 @@ Domains excluded by default:
 * apple.com
 * archive.org
 * bing.com
-* evart.com
 * facebook.com (only private URLs)
 * gmail.com
 * google.com
@@ -18,9 +17,9 @@ Domains excluded by default:
 * wikipedia.org
 * yahoo.com
 * yandex.ru
-* Any IP addresses
+* Any IP addresses and localhost
 * 100+ [porn sites](chrome/list/porn.js)
 
 You can change these rules in Options page using regular expressions
 
-![Options page](https://upload.wikimedia.org/wikipedia/commons/6/66/Never_Lose_0.2.0.png)
+![Options page](https://upload.wikimedia.org/wikipedia/commons/b/b9/Never_Lose_0.3.0_options.png)

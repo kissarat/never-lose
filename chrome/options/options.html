@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Never Lose</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="options.css">
+    <script src="../lib/lodash.js"></script>
+    <script src="../list/porn.js"></script>
+</head>
+<body>
+<form class="container">
+    <div class="alert alert-success" style="display: none"></div>
+    <div class="alert alert-warning" style="display: none"></div>
+    <div class="alert alert-danger" style="display: none"></div>
+    <div class="form-group">
+        <label>
+            <span>Regular expression exclusion URLs</span>
+            <i>
+                You can use
+                <a href="http://regexr.com/">regexr.com</a>
+                to visualize regex match
+            </i>
+        </label>
+        <textarea class="form-control"></textarea>
+    </div>
+    <div class="buttons">
+        <button id="add-domain" type="button" class="btn btn-primary">Add a domain</button>
+        <button id="reset" type="button" class="btn btn-danger">Reset</button>
+        <button id="save" type="button" class="btn btn-success">Save</button>
+    </div>
+</form>
+<script src="options.js"></script>
+</body>
+</html>
