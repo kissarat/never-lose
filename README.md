@@ -1,4 +1,4 @@
-Never Lose 0.3.0
+Never Lose 0.3.1
 ================
 
 This Chrome extension save all web pages you viewed to the Wayback Machine

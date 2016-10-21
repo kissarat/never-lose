@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/kissarat/never-lose/issues"
   },
-  "homepage": "https://github.com/kissarat/never-lose#readme"
+  "homepage": "https://github.com/kissarat/never-lose#readme",
+  "dependencies": {
+    "lodash": "^4.16.4"
+  }
 }
