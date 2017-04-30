@@ -16,6 +16,42 @@
 <div id="app">
     <router-view/>
 </div>
-<script src="options.js"></script>
+
+<template id="view-login">
+    <form class="ui form segment">
+        <div class="field">
+            <label>Hostname</label>
+            <select class="ui dropdown" type="text" v-model="origin">
+                <option value="https://my.goldenlife.me">https://my.goldenlife.me</option>
+            </select>
+        </div>
+        <div class="field">
+            <label>Email</label>
+            <input type="text" v-model="email" placeholder="Email">
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" v-model="password" placeholder="Password">
+        </div>
+        <button type="button" v-on:click="submit">Login</button>
+    </form>
+</template>
+
+<template id="view-editor">
+    <form class="ui form segment">
+        <div class="field">
+            <label>Rules</label>
+            <textarea v-model="text"></textarea>
+        </div>
+        <button type="button" v-on:click="submit">Save</button>
+    </form>
+</template>
+
+<div>
+    <script src="common.js"></script>
+    <script src="pages/login.js"></script>
+    <script src="pages/editor.js"></script>
+    <script src="options.js"></script>
+</div>
 </body>
 </html>

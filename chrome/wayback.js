@@ -155,7 +155,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 })
 
 function loadRules() {
-  chrome.storage.sync.get('rules', function ({rules}) {
+  chrome.storage.local.get('rules', function ({rules}) {
     rules = rules ? rules.split('\n') : []
     excludes = [
       /^https?:\/{2}[^\/]*archive\.org/,

@@ -1,5 +1,4 @@
 const NotFound = {template: '<p>Page not found</p>'}
-const Home = {template: '<p>home page</p>'}
 const About = {template: '<p>about page</p>'}
 
 function map(object, cb) {
@@ -12,9 +11,10 @@ function map(object, cb) {
 
 const router = new VueRouter({
   routes: map({
-      '/': Home,
+      '/': Editor,
       '/about': About,
-      '*': NotFound
+      '/login': Login,
+      '*': NotFound,
     },
     (component, path) => ({path, component})
   )
