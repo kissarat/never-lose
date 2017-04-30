@@ -5,7 +5,7 @@ const ui = {
   danger: '.alert-danger'
 }
 
-for(const name in ui) {
+for (const name in ui) {
   ui[name] = document.querySelector(ui[name])
 }
 
@@ -34,7 +34,8 @@ function domainToRegex(domain) {
 }
 
 const buttons = {
-  save: function () {
+  save() {
+    // const rules = ui.textarea.value
     const rules =
       _.uniq(ui.textarea.value.split(/\s*\n\s*/))
         .map(s => '#' === s[0] ? '\n' + s : s)
@@ -45,7 +46,7 @@ const buttons = {
     })
   },
 
-  reset: function () {
+  reset () {
     chrome.storage.sync.clear(function () {
       location.reload()
     })
@@ -104,7 +105,7 @@ chrome.storage.sync.get('rules', function ({rules}) {
       .map(s => 'string' == typeof s ? s : s.toString().slice(1, -1))
       .concat(processDomainList(well_known))
       .concat(processDomainList(advertise))
-      .concat(processDomainList(porn))
+      // .concat(processDomainList(porn))
       .join('\n')
   }
 
